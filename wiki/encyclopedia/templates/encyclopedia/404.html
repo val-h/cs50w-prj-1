@@ -1,0 +1,11 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+    <p>The topic you are lookig for doesn't exist.</p>
+    <a href="#">Try creating a page for {{ title }}</a>
+{% endblock body %}
