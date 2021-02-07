@@ -1,7 +1,9 @@
-from django.shortcuts import render
+# import re
+from re import match
+from django.shortcuts import render, redirect
 
 from . import util
-
+# from .forms import SearchForm
 
 def index(request):
     context = {
@@ -23,5 +25,20 @@ def wiki_page(request, title):
 # Tried to make a search query while using wiki_page but it needs it parameter
 # to work with the previous feature, directly typing it in the url.
 def search_page(request):
-    pass
+    if request.method == "POST":
+        entries = util.list_entries()
+        # Display the page if names match exactly
+        if request.POST['q'] in entries:
+            # return wiki_page(request, request.POST['q'])
+            return redirect('encyclopedia:wiki_page', request.POST['q'])
+        
+        # Show a page with the search results if any
+        matches = []
+        for entry in entries:
+            if request.POST['q'] in entry:
+                matches.append(entry)
+        if matches:
+            return render(request, 'encyclopedia/search.html', {'entries': matches})
+        else:
+            return render(request, 'encyclopedia/404.html')
 
