@@ -1,5 +1,4 @@
-# import re
-# from re import match
+import markdown2 as md2
 from random import choice
 from django.shortcuts import render, redirect
 
@@ -18,7 +17,7 @@ def wiki_page(request, title):
     context = {
         'title': title,
         # To make a custom md to html parser for later
-        'content': util.get_entry(title),
+        'content': md2.markdown(util.get_entry(title)),
     }
     if context['content'] == None:
         return render(request, 'encyclopedia/404.html', context=context)
