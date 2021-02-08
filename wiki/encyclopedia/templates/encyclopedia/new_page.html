@@ -9,7 +9,7 @@
         <!-- Warrning element with css for later -->
         <h3 style="color: rgb(240, 132, 0);">A page with that name already exists!</h3>
     {% endif %}
-    <form id="new-page-form" action="{% url 'encyclopedia:new_page' %}" method="POST">
+    <form id="entry-form" action="{% url 'encyclopedia:new_page' %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Create Page">

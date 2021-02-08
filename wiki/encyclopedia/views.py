@@ -4,7 +4,7 @@ from random import choice
 from django.shortcuts import render, redirect
 
 from . import util
-from .forms import NewEntry
+from .forms import NewEntry, EditEntry
 
 def index(request):
     """Index page of the website."""
@@ -69,3 +69,19 @@ def new_page(request):
         return render(request, 'encyclopedia/new_page.html', {
             'form': form,
             'error': False})
+
+def edit_page(request, title):
+    if request.method == "POST":
+        form = EditEntry(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data['content']
+            util.save_entry(title, content)
+            return redirect('encyclopedia:wiki_page', title)
+    
+    else:
+        entry = util.get_entry(title)
+        form = EditEntry({'content': entry})
+        return render(request, 'encyclopedia/edit_page.html', context={
+            'entry': title,
+            'form': form})
+

@@ -12,10 +12,10 @@ h1 {
     padding-top: 20px;
 }
 
-textarea {
-    height: 90vh;
-    width: 80%;
-}
+// textarea {
+//     height: 90vh;
+//     width: 80%;
+// }
 
 .main {
     padding: 10px;
@@ -38,7 +38,7 @@ textarea {
 }
 
 /* Testing out stuff */
-#new-page-form {
+#entry-form {
     margin: 0 40px;
     label{
         display: block;
@@ -61,8 +61,5 @@ textarea {
     // label[for=id_content] {
     //     display: block;
     //     margin: 15px;
-    // }
-
-    
+    // }   
 }
-

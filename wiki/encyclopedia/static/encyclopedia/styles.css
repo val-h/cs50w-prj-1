@@ -12,11 +12,6 @@ h1 {
   padding-top: 20px;
 }
 
-textarea {
-  height: 90vh;
-  width: 80%;
-}
-
 .main {
   padding: 10px;
 }
@@ -38,20 +33,20 @@ textarea {
 }
 
 /* Testing out stuff */
-#new-page-form {
+#entry-form {
   margin: 0 40px;
 }
-#new-page-form label {
+#entry-form label {
   display: block;
   margin: 10px 0;
 }
-#new-page-form #id_content {
+#entry-form #id_content {
   max-width: 1200px;
   min-width: 600px;
   width: 70%;
   height: 200px;
 }
-#new-page-form #id_title {
+#entry-form #id_title {
   width: 320px;
 }
 
