@@ -1,17 +1,20 @@
 # import re
-from re import match
+# from re import match
+from random import choice
 from django.shortcuts import render, redirect
 
 from . import util
 from .forms import NewEntry
 
 def index(request):
+    """Index page of the website."""
     context = {
         'entries': util.list_entries()
     }
     return render(request, "encyclopedia/index.html", context=context)
 
 def wiki_page(request, title):
+    """Render a requested page."""
     context = {
         'title': title,
         # To make a custom md to html parser for later
@@ -22,9 +25,14 @@ def wiki_page(request, title):
     else:
         return render(request, 'encyclopedia/wiki_page.html', context=context)
 
-# Tried to make a search query while using wiki_page but it needs it parameter
-# to work with the previous feature, directly typing it in the url.
+def random_page(request):
+    """Choose a random page and redirect the user to it."""
+    entries = util.list_entries()
+    random_entry = choice(entries)
+    return redirect('encyclopedia:wiki_page', random_entry)
+
 def search_page(request):
+    """Search for a page with either full name or slice of it."""
     if request.method == "POST":
         entries = util.list_entries()
         # Display the page if names match exactly
@@ -43,6 +51,7 @@ def search_page(request):
             return render(request, 'encyclopedia/404.html')
 
 def new_page(request):
+    """New page for any user to create."""
     if request.method == "POST":
         form = NewEntry(request.POST)
         if form.is_valid():

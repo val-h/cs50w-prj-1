@@ -8,4 +8,5 @@ urlpatterns = [
     path("wiki/<str:title>", views.wiki_page, name="wiki_page"),
     path("search/", views.search_page, name="search_page"),
     path("new_page/", views.new_page, name="new_page"),
+    path("random_page/", views.random_page, name="random_page"),
 ]
