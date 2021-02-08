@@ -3,7 +3,7 @@ from re import match
 from django.shortcuts import render, redirect
 
 from . import util
-# from .forms import SearchForm
+from .forms import NewEntry
 
 def index(request):
     context = {
@@ -42,3 +42,21 @@ def search_page(request):
         else:
             return render(request, 'encyclopedia/404.html')
 
+def new_page(request):
+    if request.method == "POST":
+        form = NewEntry(request.POST)
+        if form.is_valid():
+            title, content = form.cleaned_data['title'], form.cleaned_data['content']
+            if title not in util.list_entries():
+                util.save_entry(title, content)
+                return redirect('encyclopedia/wiki_page', title)
+            else:
+                return render(request, 'encyclopedia/new_page.html', {
+                    'form': form,
+                    'error': True})
+
+    else:
+        form = NewEntry()
+        return render(request, 'encyclopedia/new_page.html', {
+            'form': form,
+            'error': False})
