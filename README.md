@@ -17,4 +17,3 @@ for the project can be found in requirements.txt or listed here:
 * toml==0.10.2
 * typed-ast==1.4.2
 * wrapt==1.12.1
-
