@@ -56,4 +56,9 @@ h1 {
   width: 320px;
 }
 
+.layout-grid {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
 /*# sourceMappingURL=styles.css.map */
