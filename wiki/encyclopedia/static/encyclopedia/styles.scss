@@ -71,7 +71,59 @@ h1 {
 }
 
 // To make the grid layout
-.layout-grid {
+#layout-grid {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 0;
+
+}
+
+#nav-grid {
+    background-color: linen;
+    a {
+        font-size: 18px;
+        text-decoration: none;
+        border: 1px solid lightskyblue;
+        padding: 5px 12px;
+        margin: 8px 20px;
+    }
+}
+
+#main-grid {
+    font-size: 16px;
+
+}
+
+@media (max-width: 599px) {
+    #layout-grid {
+        grid-template-columns: 100%; // auto
+        
+        #nav-grid {
+            a {
+                font-size: 12px;
+                padding: 2px 7px;
+                margin: 4px 12px;
+            }
+
+            #search {
+                max-width: 500px;
+                width: 100%;
+                margin: 7px 5%;
+            }
+        }
+
+        #main-grid {
+            #search {
+                // max-width: 600px;
+                // width: 80%;
+                width: 100%
+            }
+        }
+    }
+}
+
+@media (min-width: 600px) {
+    #layout-grid {
+        margin: 0 5%;
+        grid-template-columns: 20% 70%;
+    }
 }
