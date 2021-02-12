@@ -68,8 +68,6 @@ h1 {
   font-size: 18px;
   text-decoration: none;
   border: 1px solid lightskyblue;
-  padding: 5px 12px;
-  margin: 8px 20px;
 }
 
 #main-grid {
@@ -96,8 +94,23 @@ h1 {
 }
 @media (min-width: 600px) {
   #layout-grid {
-    margin: 0 5%;
-    grid-template-columns: 20% 70%;
+    grid-template-columns: 25% 75%;
+  }
+  #layout-grid #nav-grid {
+    grid-column: 1/2;
+  }
+  #layout-grid #nav-grid a {
+    margin: 0 10px;
+    line-height: 40px;
+    padding: 4px 12px;
+  }
+  #layout-grid #nav-grid #search {
+    max-width: 280px;
+    width: 100%;
+    margin: 9px 6px;
+  }
+  #layout-grid #main-grid {
+    grid-column: 2/3;
   }
 }
 
