@@ -5,11 +5,10 @@
 {% endblock %}
 
 {% block body %}
-    <h1>All Pages</h1>
-
-    <ul>
+    <h1 style="font-size: 28px; text-align: center;">All Pages</h1>
+    <ul id="index-list">
         {% for entry in entries %}
-            <li><a href="{% url 'encyclopedia:wiki_page' entry %}">{{ entry }}</a></li>
+            <li id="index-list-item"><a href="{% url 'encyclopedia:wiki_page' entry %}">{{ entry }}</a></li>
         {% endfor %}
     </ul>
 

@@ -4,8 +4,14 @@
 
 {% block body %}
     {% for entry in entries %}
-        <div>
+        <div style="margin: 15px 20px;">
             <a href="{% url 'encyclopedia:wiki_page' entry %}">{{ entry }}</a>
         </div>
+    {% empty %}
+        <!-- Specificly said that an error page should be shown
+        and i am keeping this because it might be needed for tests -->
+        <h3 style="text-align: center; margin-top: 100px; font-size: 36px;">
+            No Results found!
+        </h3>
     {% endfor %}
 {% endblock %}

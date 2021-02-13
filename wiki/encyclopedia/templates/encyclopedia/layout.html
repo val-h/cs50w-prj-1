@@ -19,14 +19,16 @@
                     {% csrf_token %}
                     <input id="search" type="text" name="q" placeholder="Search Encyclopedia">
                 </form>
-                <div>
-                    <a href="{% url 'encyclopedia:index' %}">Home</a>
-                </div>
-                <div>
-                    <a href="{% url 'encyclopedia:new_page' %}">Create New Page</a>
-                </div>
-                <div>
-                    <a href="{% url 'encyclopedia:random_page' %}">Random Page</a>
+                <div id="flex-container">
+                    <div>
+                        <a href="{% url 'encyclopedia:index' %}">Home</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'encyclopedia:new_page' %}">Create New Page</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'encyclopedia:random_page' %}">Random Page</a>
+                    </div>
                 </div>
                 {% block nav %}
                 {% endblock %}
@@ -35,10 +37,12 @@
                 {% block body %}
                 {% endblock %}
             </div>
+            <footer>
+                <div>
+                    Made by:
+                    <a href="https://www.github.com/val-h" target="_blank">val-h</a>
+                </div>
+            </footer>
         </div>
-        <footer>
-            Made by:
-            <a href="https://www.github.com/val-h">val-h</a>
-        </footer>
     </body>
 </html>

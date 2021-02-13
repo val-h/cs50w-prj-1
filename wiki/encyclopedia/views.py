@@ -16,9 +16,13 @@ def wiki_page(request, title):
     """Render a requested page."""
     context = {
         'title': title,
-        # To make a custom md to html parser for later
-        'content': md2.markdown(util.get_entry(title)),
+        'content': None,
     }
+    try:
+        context['content'] = md2.markdown(util.get_entry(title))
+    except:
+        return render(request, 'encyclopedia/404.html', context=context)
+
     if context['content'] == None:
         return render(request, 'encyclopedia/404.html', context=context)
     else:
@@ -36,7 +40,7 @@ def search_page(request):
         entries = util.list_entries()
         # Display the page if names match exactly
         if request.POST['q'] in entries:
-            # return wiki_page(request, request.POST['q'])
+            # wiki_page(request, request.POST['q'])
             return redirect('encyclopedia:wiki_page', request.POST['q'])
         
         # Show a page with the search results if any
@@ -47,6 +51,7 @@ def search_page(request):
         if matches:
             return render(request, 'encyclopedia/search.html', {'entries': matches})
         else:
+            context={'title': request.POST['q']}
             return render(request, 'encyclopedia/404.html')
 
 def new_page(request):
@@ -57,7 +62,7 @@ def new_page(request):
             title, content = form.cleaned_data['title'], form.cleaned_data['content']
             if title not in util.list_entries():
                 util.save_entry(title, content)
-                return redirect('encyclopedia/wiki_page', title)
+                return redirect('encyclopedia:wiki_page', title)
             else:
                 return render(request, 'encyclopedia/new_page.html', {
                     'form': form,

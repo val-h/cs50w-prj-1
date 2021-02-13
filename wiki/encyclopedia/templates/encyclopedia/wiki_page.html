@@ -9,5 +9,5 @@
         {{ content|safe }}
     </p>
     <hr>
-    <a href="{% url 'encyclopedia:edit_page' title %}">Edit Content</a>
+    <a id="edit-link" href="{% url 'encyclopedia:edit_page' title %}">Edit Content</a>
 {% endblock %}
