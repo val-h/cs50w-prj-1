@@ -14,7 +14,7 @@
                 Placeholder
             </div> -->
             <div id="nav-grid">
-                <h2>Wiki</h2>
+                <h2 style="text-align: center;">Wiki</h2>
                 <form action="{% url 'encyclopedia:search_page' %}" method="POST">
                     {% csrf_token %}
                     <input id="search" type="text" name="q" placeholder="Search Encyclopedia">

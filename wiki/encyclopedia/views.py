@@ -52,7 +52,7 @@ def search_page(request):
             return render(request, 'encyclopedia/search.html', {'entries': matches})
         else:
             context={'title': request.POST['q']}
-            return render(request, 'encyclopedia/404.html')
+            return render(request, 'encyclopedia/404.html', context)
 
 def new_page(request):
     """New page for any user to create."""
